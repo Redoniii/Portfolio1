@@ -329,26 +329,10 @@
             <li class="more-projects" style="display: none;">
                 <strong><a href="https://github.com/Redoniii/Alarm-Monitoring">Alarm monitoring: </a></strong> A project using SQL Server about monitoring various alarms for various companies.
             </li>
-            <li>File Encryption: A project donw with C# using Caesar Encryption</li>
+            <li class="more-projects" style="display: none;">File Encryption: A project donw with C# using Caesar Encryption</li>
         </ul>
         <button id="see-more-btn" onclick="toggleProjects()">See More</button>
     </section>
-
-    <script>
-        function toggleProjects() {
-            var moreProjects = document.querySelectorAll('.more-projects');
-            var seeMoreBtn = document.getElementById('see-more-btn');
-            moreProjects.forEach(function(project) {
-                if (project.style.display === 'none') {
-                    project.style.display = 'list-item';
-                    seeMoreBtn.textContent = 'See Less';
-                } else {
-                    project.style.display = 'none';
-                    seeMoreBtn.textContent = 'See More';
-                }
-            });
-        }
-    </script>
     <section id="courses" class="courses">
         <h2>Courses</h2>
         <ul>
@@ -377,5 +361,22 @@
     <footer>
         <p>&copy; 2024 My Portfolio | All Rights Reserved</p>
     </footer>
+
+    <script>
+        function toggleProjects() {
+            var moreProjects = document.querySelectorAll('.more-projects');
+            var seeMoreBtn = document.getElementById('see-more-btn');
+            moreProjects.forEach(function(project) {
+                if (project.style.display === 'none') {
+                    project.style.display = 'list-item';
+                    seeMoreBtn.textContent = 'See Less';
+                } else {
+                    project.style.display = 'none';
+                    seeMoreBtn.textContent = 'See More';
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
