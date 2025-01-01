@@ -157,6 +157,28 @@
             background: #45a049;
         }
 
+        #see-more-btn {
+        background: linear-gradient(45deg, #4caf50, #45a049);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease, transform 0.3s ease;
+        margin-top: 20px;
+    }
+
+    #see-more-btn:hover {
+        background: linear-gradient(45deg, #45a049, #4caf50);
+        transform: scale(1.05);
+    }
+
+    #see-more-btn:active {
+        transform: scale(0.95);
+    }
+
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             header h1 {
@@ -282,7 +304,7 @@
     </section>
     <section id="projects" class="projects">
         <h2>Projects</h2>
-        <ul>
+        <ul id="project-list">
             <li>
                 <strong><a href="https://redoniii.github.io/VisitKosovo/faqja1.html" target="_blank">VisitKosovo: </a></strong> A web application done for Visiting places in KOSOVO.
             </li>
@@ -292,25 +314,41 @@
             <li>
                 <strong><a href="https://github.com/Redoniii/habit-tracker" target="_blank">Habit-Tracker: </a></strong> A mobile application to help users track and manage daily habits effectively. Developed with ReactJS for a seamless and efficient experience.
             </li>
-            <li>
+            <li class="more-projects" style="display: none;">
                 <strong><a href="https://github.com/Redoniii/crypto-tracker" target="_blank">Crypto-tracker: </a></strong> A mobile application about Crypto and tracking crypto done with ReactJS.
             </li>
-            <li>
+            <li class="more-projects" style="display: none;">
                 <strong><a href="https://redoniii.github.io/SignForm" target="_blank">SignIn Form: </a></strong> A simple Sign In Form made with HTML and CSS.
             </li>
-            <li>
+            <li class="more-projects" style="display: none;">
                 <strong><a href="https://github.com/Redoniii/RSAAlgorithm">RSAAlgorithm: </a></strong> A RSA Encryption Algorithm done with C#.
             </li>
-            <li>
+            <li class="more-projects" style="display: none;">
                 <strong><a href="https://github.com/Redoniii/CRUD-Operation">Basic CRUD: </a></strong> A basic CRUD operation made using SQL Server and C#.
             </li>
-            <li>
-                <strong><a href="https://github.com/Redoniii/Alarm-Monitoring">Alarm monitoring: </a></strong> A project using SQL Server about monitoring various alarams for various companies.
-            </li> 
-            <li>File Encryption: A project done with C# using Caeser Encryption</li>
-            
+            <li class="more-projects" style="display: none;">
+                <strong><a href="https://github.com/Redoniii/Alarm-Monitoring">Alarm monitoring: </a></strong> A project using SQL Server about monitoring various alarms for various companies.
+            </li>
+            <li>File Encryption: A project donw with C# using Caesar Encryption</li>
         </ul>
+        <button id="see-more-btn" onclick="toggleProjects()">See More</button>
     </section>
+
+    <script>
+        function toggleProjects() {
+            var moreProjects = document.querySelectorAll('.more-projects');
+            var seeMoreBtn = document.getElementById('see-more-btn');
+            moreProjects.forEach(function(project) {
+                if (project.style.display === 'none') {
+                    project.style.display = 'list-item';
+                    seeMoreBtn.textContent = 'See Less';
+                } else {
+                    project.style.display = 'none';
+                    seeMoreBtn.textContent = 'See More';
+                }
+            });
+        }
+    </script>
     <section id="courses" class="courses">
         <h2>Courses</h2>
         <ul>
