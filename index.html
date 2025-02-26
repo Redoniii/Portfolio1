@@ -3,395 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Redon Berisha - Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, h1, h2, p, ul, li, a, form {
-            margin: 0;
-            padding: 0;
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #3b82f6;
+            --text-color: #334155;
+            --bg-light: #f8fafc;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            padding: 0;
+        * {
             margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+        }
+
         header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0 4rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+            opacity: 0.8;
         }
 
         .profile-photo {
-            width: 140px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            margin: 1rem auto;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 2rem;
+            border: 4px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            object-fit: cover;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05) rotate(5deg);
+            border-color: var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
         }
 
         nav {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            background: #444;
-            padding: 0.5rem 0;
+            gap: 2.5rem;
+            list-style: none;
         }
 
         nav a {
-            color: #fff;
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: 500;
             padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background: #555;
-        }
-
-        section {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .intro {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .intro p {
-            font-size: 1.2rem;
-        }
-
-        .skills, .languages, .projects {
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            color: #444;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 0.5rem;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            background: #f9f9f9;
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-bar {
-            background: #eee;
-            height: 8px;
-            width: 100%;
-            border-radius: 5px;
-            margin-top: 0.5rem;
-            overflow: hidden;
+            border-radius: 6px;
+            transition: var(--transition);
             position: relative;
         }
 
-        .skill-level {
-            background: #4caf50;
-            height: 100%;
-            border-radius: 5px;
-            transition: width 0.3s ease-in-out;
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
         }
 
-        footer {
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro {
             text-align: center;
-            padding: 1rem;
-            background: #333;
-            color: #fff;
+            max-width: 800px;
+            margin: 6rem auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .intro p {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-top: 2rem;
         }
 
-        a {
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .language-bar {
+            background: #e5e7eb;
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .language-progress {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 4px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
             text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 500px;
-            margin: 1rem auto;
+        .project-link:hover {
+            gap: 0.75rem;
         }
 
-        form input, form textarea, form button {
-            padding: 0.8rem;
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
             font-size: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            transition: var(--transition);
+            font-family: inherit;
         }
 
-        form button {
-            background: #4caf50;
-            color: #fff;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
             border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        form button:hover {
-            background: #45a049;
+        .submit-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .more-projects {
+            display: none;
         }
 
         #see-more-btn {
-        background: linear-gradient(45deg, #4caf50, #45a049);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        padding: 10px 15px;
-        font-size: 16px;
-        border-radius: 5px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: background 0.3s ease, transform 0.3s ease;
-        margin-top: 20px;
-    }
+            display: block;
+            margin: 3rem auto 0;
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
 
-    #see-more-btn:hover {
-        background: linear-gradient(45deg, #45a049, #4caf50);
-        transform: scale(1.05);
-    }
+        #see-more-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
 
-    #see-more-btn:active {
-        transform: scale(0.95);
-    }
-    #project-list a {
-        color: #333;
-        text-decoration: none;
-    }
-
-        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
+            header {
+                padding: 4rem 0 3rem;
+            }
+
             header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            nav {
-                display: flex;
+            nav ul {
                 flex-direction: column;
-                align-items: center; 
-                justify-content: center;
-            }
-
-            nav a {
-                padding: 1rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            .intro p {
-                font-size: 1rem;
+                align-items: center;
+                gap: 1rem;
             }
 
             .profile-photo {
-                width: 110px;
-                height: 120px;
+                width: 160px;
+                height: 160px;
             }
 
-            .skills, .languages, .projects {
-                margin-bottom: 1.5rem;
+            .section-title {
+                font-size: 2rem;
             }
 
-            .skill-bar {
-                height: 6px;
+            .intro p {
+                font-size: 1.1rem;
             }
 
-            form input, form textarea, form button {
-                font-size: 0.9rem;
-                padding: 0.7rem;
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 100%;
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            header p {
-                font-size: 1rem;
+            section {
+                padding: 0 1rem;
+                margin: 4rem auto;
             }
 
             .profile-photo {
-                width: 90px;
-                height: 100px;
+                width: 140px;
+                height: 140px;
             }
 
-            nav a {
-                padding: 0.8rem;
-                font-size: 0.9rem;
+            header h1 {
+                font-size: 2rem;
             }
 
-            .intro p {
-                font-size: 0.9rem;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
-            .skills, .languages, .projects {
-                margin-bottom: 1rem;
+            .contact-form {
+                padding: 1.5rem;
             }
 
-            form input, form textarea, form button {
-                font-size: 0.9rem;
-                padding: 0.7rem;
+            .skill-card {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="../Portfolio1/Portfolio.jpeg" alt="Profile Photo" class="profile-photo">
-        <h1>My Portfolio</h1>
-        <p>Computer Science Enthusiast | Passionate About Technology</p>
+        <img src="../Portfolio1/Portfolio.jpeg" alt="Redon Berisha" class="profile-photo">
+        <h1>Redon Berisha</h1>
+        <p>Software Engineer | Full Stack Developer</p>
     </header>
-    <section class="intro">
-        <h2>Hello, I'm Redon Berisha!</h2>
-        <p>Welcome to my portfolio! I'm a Computer Science and Engineering (CSE) student with a passion for creating innovative solutions and building impactful software. Through my academic journey and personal projects, I've gained experience in programming, web development, and solving complex problems. I'm driven by curiosity and a desire to continually improve and learn new technologies. Explore my work and achievements below!</p>
-    </section>
+
     <nav>
-        <a href="#skills">Skills</a>
-        <a href="#languages">Languages</a>
-        <a href="#projects">Projects</a>
-        <a href="#courses">Courses</a>
-        <a href="#contact">Contact me</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>English</li>
-            <li>Problem Solving</li>
-            <li>Data Structures and Algorithms</li>
-            <li>Web Development (HTML, CSS, JavaScript)</li>
-            <li>Database Management (MySQL, SQL Server)</li>
-        </ul>
+
+    <section id="about" class="intro">
+        <h2>Hello, I'm Redon</h2>
+        <p>I'm a passionate Software Engineer specializing in full-stack development. With a strong foundation in Computer Science and Engineering, I create innovative solutions that solve real-world problems. My expertise spans web development, database management, and software architecture, driven by a constant desire to learn and grow in the ever-evolving tech landscape.</p>
     </section>
-    <section id="languages" class="languages">
-        <h2>Programming Languages</h2>
-        <ul>
-            <li>C#
-                <div class="skill-bar"><div class="skill-level" style="width: 55%;"></div></div>
-            </li>
-            <li>Html, CSS
-                <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
-            </li>
-            <li>JavaScript
-                <div class="skill-bar"><div class="skill-level" style="width: 30%;"></div></div>
-            </li>
-            <li>Python
-                <div class="skill-bar"><div class="skill-level" style="width: 50%;"></div></div>
-            </li>
-            <li>SQL
-                <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
-            </li>
-        </ul>
+
+    <section id="skills">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-globe fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Web Development</h3>
+                <p>Modern web applications using HTML5, CSS3, and JavaScript frameworks</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Database Management</h3>
+                <p>Expertise in MySQL and SQL Server database design and optimization</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Software Engineering</h3>
+                <p>Strong foundation in data structures, algorithms, and software architecture</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-project-diagram fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Problem Solving</h3>
+                <p>Analytical thinking and creative solution development</p>
+            </div>
+        </div>
     </section>
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <ul id="project-list">
-            <li>
-                <strong><a href="https://redoniii.github.io/VisitKosovo/faqja1.html" target="_blank">VisitKosovo: </a></strong> A web application done for Visiting places in KOSOVO.
-            </li>
-            <li>
-                <strong><a href="https://github.com/Redoniii/Recipe-Finder" target="_blank">Receipe-Finder: </a></strong> A dynamic mobile application for discovering and organizing recipes based on user preferences and ingredients. Utilizes responsive design to enhance usability across devices.
-            </li>
-            <li>
-                <strong><a href="https://github.com/Redoniii/habit-tracker" target="_blank">Habit-Tracker: </a></strong> A mobile application to help users track and manage daily habits effectively. Developed with ReactJS for a seamless and efficient experience.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/crypto-tracker" target="_blank">Crypto-tracker: </a></strong> A mobile application about Crypto and tracking crypto done with ReactJS.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://redoniii.github.io/SignForm" target="_blank">SignIn Form: </a></strong> A simple Sign In Form made with HTML and CSS.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/RSAAlgorithm" target="_blank">RSAAlgorithm: </a></strong> A RSA Encryption Algorithm done with C#.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/CRUD-Operation" target="_blank">Basic CRUD: </a></strong> A basic CRUD operation made using SQL Server and C#.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/Alarm-Monitoring" target="_blank">Alarm monitoring: </a></strong> A project using MySQL about monitoring various alarms for various companies.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/FlappyBirdPY" target="_blank">Flappy Bird: </a></strong> Simple Flappy Bird game made using Python.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/SnakePY" target="_blank">Snake : </a></strong> Simple Flappy Bird game made using Python.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://redoniii.github.io/X-O" target="_blank">X-O : </a></strong> Simple X-O game made using HTML, CSS and JavaScript.
-            </li>
-            <li class="more-projects" style="display: none;">
-                <strong><a href="https://github.com/Redoniii/CaesarFile" target="_blank">File Encryption: </a></strong> A project done with C# using Caesar Encryption.
-            </li>
-        </ul>
-        <button id="see-more-btn" onclick="toggleProjects()">See More</button>
+
+    <section id="languages">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>C#</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 55%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>HTML/CSS</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 30%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Python</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 50%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>SQL</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
     </section>
-    <section id="courses" class="courses">
-        <h2>Courses</h2>
-        <ul>
-            <li>CacttusEDU: Web Development: HTML, CSS, JavaScript</li>
-            <li>CocaColaSkills: SoftSkills</li>
-            <li>PrishtinaREA: WordPress</li>
-            <li>DataCamp: BigData with PySpark</li>
-        </ul>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">VisitKosovo</h3>
+                    <p class="project-description">A comprehensive web platform showcasing Kosovo's tourist destinations, cultural heritage, and travel experiences.</p>
+                    <a href="https://redoniii.github.io/VisitKosovo/faqja1.html" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Recipe-Finder</h3>
+                    <p class="project-description">An intuitive mobile application for discovering and organizing recipes, featuring personalized recommendations and ingredient management.</p>
+                    <a href="https://github.com/Redoniii/Recipe-Finder" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Habit-Tracker</h3>
+                    <p class="project-description">A sophisticated mobile application for building and maintaining healthy habits, with progress tracking and analytics.</p>
+                    <a href="https://github.com/Redoniii/habit-tracker" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card more-projects">
+                <div class="project-content">
+                    <h3 class="project-title">Crypto-tracker</h3>
+                    <p class="project-description">Real-time cryptocurrency tracking and analysis platform with market insights.</p>
+                    <a href="https://github.com/Redoniii/crypto-tracker" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card more-projects">
+                <div class="project-content">
+                    <h3 class="project-title">RSA Algorithm</h3>
+                    <p class="project-description">Implementation of the RSA encryption algorithm with practical applications.</p>
+                    <a href="https://github.com/Redoniii/RSAAlgorithm" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <button id="see-more-btn" onclick="toggleProjects()">View More Projects</button>
     </section>
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>If you'd like to get in touch, feel free to reach out via email or follow me on my professional profiles.</p>
-        <ul>
-            <li>Email: berisharedon10@gmail.com</li>
-            <li>GitHub: <a href="https://github.com/Redoniii" target="_blank">github.com/Redoniii</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/redon-berisha-220a2431b/" target="_blank">linkedin.com/in/redon-berisha</a></li>
-        </ul>
-        <h3>Send Me a Message</h3>
-        <form action="https://formspree.io/f/manndnpr" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
+
+    <section id="courses">
+        <h2 class="section-title">Professional Development</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-code fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Web Development</h3>
+                <p>CacttusEDU: Comprehensive training in HTML, CSS, and JavaScript</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-users fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Soft Skills</h3>
+                <p>CocaColaSkills: Professional development and communication</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-wordpress fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>WordPress Development</h3>
+                <p>PrishtinaREA: Advanced WordPress development and customization</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Big Data</h3>
+                <p>DataCamp: Big Data processing with PySpark</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="intro">Interested in collaboration or have a project in mind? I'd love to hear from you.</p>
+        
+        <div class="social-links">
+            <a href="mailto:berisharedon10@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://github.com/Redoniii" target="_blank" class="social-link">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/redon-berisha-220a2431b/" target="_blank" class="social-link">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/manndnpr" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
         </form>
-    </section>    
+    </section>
+
     <footer>
-        <p>&copy; 2024 My Portfolio | All Rights Reserved</p>
+        <p>&copy; 2024 Redon Berisha | All Rights Reserved</p>
     </footer>
 
     <script>
         function toggleProjects() {
-            var moreProjects = document.querySelectorAll('.more-projects');
-            var seeMoreBtn = document.getElementById('see-more-btn');
-            moreProjects.forEach(function(project) {
-                if (project.style.display === 'none') {
-                    project.style.display = 'list-item';
-                    seeMoreBtn.textContent = 'See Less';
+            const moreProjects = document.querySelectorAll('.more-projects');
+            const seeMoreBtn = document.getElementById('see-more-btn');
+            
+            moreProjects.forEach(project => {
+                if (project.style.display === 'none' || project.style.display === '') {
+                    project.style.display = 'block';
+                    seeMoreBtn.textContent = 'View Less';
                 } else {
                     project.style.display = 'none';
-                    seeMoreBtn.textContent = 'See More';
+                    seeMoreBtn.textContent = 'View More Projects';
                 }
             });
         }
-    </script>
 
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.width;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.language-progress').forEach(bar => {
+            bar.dataset.width = bar.style.width; // Store the correct initial width
+            bar.style.width = '0'; // Start from zero
+            observer.observe(bar);
+        });
+
+    </script>
 </body>
 </html>
