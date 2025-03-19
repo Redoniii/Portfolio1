@@ -26,6 +26,120 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-light);
+            padding-top: 60px; /* Add padding for fixed navbar */
+        }
+
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            nav a:hover {
+                background: var(--bg-light);
+            }
         }
 
         header {
@@ -38,6 +152,9 @@
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
+        /* Rest of your existing styles... */
+        
+        /* Keep all your existing styles below this point unchanged */
         header::before {
             content: '';
             position: absolute;
@@ -83,49 +200,6 @@
             max-width: 600px;
             margin: 0 auto;
             font-weight: 300;
-        }
-
-        nav {
-            background: rgba(255,255,255,0.95);
-            padding: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            position: static;
-            backdrop-filter: blur(10px);
-        }
-
-        nav ul {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after {
-            width: 100%;
         }
 
         section {
@@ -396,12 +470,6 @@
                 font-size: 2.5rem;
             }
 
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
             .profile-photo {
                 width: 160px;
                 height: 160px;
@@ -456,26 +524,35 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <i class="fas fa-code"></i>
+                RB
+            </a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header>
         <img src="../Portfolio1/Portfolio.jpeg" alt="Redon Berisha" class="profile-photo">
         <h1>Redon Berisha</h1>
-        <p>Software Engineer | Full Stack Developer</p>
+        <p>CSE Student</p>
     </header>
-
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#languages">Languages</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
     <section id="about" class="intro">
         <h2>Hello, I'm Redon</h2>
-        <p>I'm a passionate Software Engineer specializing in full-stack development. With a strong foundation in Computer Science and Engineering, I create innovative solutions that solve real-world problems. My expertise spans web development, database management, and software architecture, driven by a constant desire to learn and grow in the ever-evolving tech landscape.</p>
+        <p>I'm a passionate Software Engineer. With a strong foundation in Computer Science and Engineering, I create innovative solutions that solve real-world problems. My expertise spans web development, database management, and software architecture, driven by a constant desire to learn and grow in the ever-evolving tech landscape.</p>
     </section>
 
     <section id="skills">
@@ -560,8 +637,16 @@
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+            </div><div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Library-Management</h3>
+                    <p class="project-description">A windows app about Library-Management done using SQLServer and C#(.NET).</p>
+                    <a href="https://github.com/Redoniii/LibraryForms" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="project-card">
+            <div class="project-card more-projects">
                 <div class="project-content">
                     <h3 class="project-title">Habit-Tracker</h3>
                     <p class="project-description">A sophisticated mobile application for building and maintaining healthy habits, with progress tracking and analytics.</p>
@@ -656,20 +741,31 @@
     </footer>
 
     <script>
-        function toggleProjects() {
-            const moreProjects = document.querySelectorAll('.more-projects');
-            const seeMoreBtn = document.getElementById('see-more-btn');
-            
-            moreProjects.forEach(project => {
-                if (project.style.display === 'none' || project.style.display === '') {
-                    project.style.display = 'block';
-                    seeMoreBtn.textContent = 'View Less';
-                } else {
-                    project.style.display = 'none';
-                    seeMoreBtn.textContent = 'View More Projects';
-                }
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const isExpanded = navMenu.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
-        }
+        });
 
         // Smooth scroll for navigation
         document.querySelectorAll('nav a').forEach(anchor => {
@@ -690,11 +786,25 @@
         }, { threshold: 0.5 });
 
         document.querySelectorAll('.language-progress').forEach(bar => {
-            bar.dataset.width = bar.style.width; // Store the correct initial width
-            bar.style.width = '0'; // Start from zero
+            bar.dataset.width = bar.style.width;
+            bar.style.width = '0';
             observer.observe(bar);
         });
 
+        function toggleProjects() {
+            const moreProjects = document.querySelectorAll('.more-projects');
+            const seeMoreBtn = document.getElementById('see-more-btn');
+            
+            moreProjects.forEach(project => {
+                if (project.style.display === 'none' || project.style.display === '') {
+                    project.style.display = 'block';
+                    seeMoreBtn.textContent = 'View Less';
+                } else {
+                    project.style.display = 'none';
+                    seeMoreBtn.textContent = 'View More Projects';
+                }
+            });
+        }
     </script>
 </body>
 </html>
