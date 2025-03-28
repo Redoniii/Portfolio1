@@ -12,7 +12,23 @@
             --accent-color: #3b82f6;
             --text-color: #334155;
             --bg-light: #f8fafc;
+            --nav-bg: rgba(255,255,255,0.95);
+            --card-bg: white;
+            --card-border: rgba(0,0,0,0.05);
+            --form-border: #e5e7eb;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark mode variables */
+        .dark {
+            --primary-color: #f1f5f9;
+            --secondary-color: #e2e8f0;
+            --text-color: #cbd5e1;
+            --bg-light: #0f172a;
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --card-bg: #1e293b;
+            --card-border: rgba(255,255,255,0.1);
+            --form-border: #334155;
         }
 
         * {
@@ -27,10 +43,11 @@
             color: var(--text-color);
             background-color: var(--bg-light);
             padding-top: 60px; /* Add padding for fixed navbar */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         nav {
-            background: rgba(255,255,255,0.95);
+            background: var(--nav-bg);
             padding: 0.75rem 2rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: fixed;
@@ -39,6 +56,7 @@
             right: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
         }
 
         .nav-container {
@@ -57,6 +75,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: color 0.3s ease;
         }
 
         .menu-toggle {
@@ -103,6 +122,27 @@
             width: 100%;
         }
 
+        /* Dark mode toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-left: 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            margin-left: auto;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -117,7 +157,7 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 0;
-                background: white;
+                background: var(--card-bg);
                 padding: 1rem;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
@@ -136,10 +176,6 @@
                 padding: 1rem;
                 width: 100%;
             }
-
-            nav a:hover {
-                background: var(--bg-light);
-            }
         }
 
         header {
@@ -152,6 +188,9 @@
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
+        .dark header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
 
         header::before {
             content: '';
@@ -261,12 +300,12 @@
         }
 
         .skill-card {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid var(--card-border);
         }
 
         .skill-card:hover {
@@ -276,7 +315,7 @@
         }
 
         .language-bar {
-            background: #e5e7eb;
+            background: var(--form-border);
             height: 8px;
             border-radius: 4px;
             margin-top: 1rem;
@@ -298,12 +337,12 @@
         }
 
         .project-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid var(--card-border);
             position: relative;
         }
 
@@ -346,7 +385,7 @@
         .contact-form {
             max-width: 600px;
             margin: 3rem auto;
-            background: white;
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -367,11 +406,13 @@
         .form-group textarea {
             width: 100%;
             padding: 0.75rem;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--form-border);
             border-radius: 6px;
             font-size: 1rem;
             transition: var(--transition);
             font-family: inherit;
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
 
         .form-group input:focus,
@@ -417,7 +458,7 @@
             transition: var(--transition);
             padding: 0.5rem 1rem;
             border-radius: 6px;
-            background: white;
+            background: var(--card-bg);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
@@ -433,6 +474,11 @@
             text-align: center;
             padding: 3rem 2rem;
             margin-top: 6rem;
+        }
+
+        .dark footer {
+            background: #0f172a;
+            color: #f1f5f9;
         }
 
         .more-projects {
@@ -528,9 +574,6 @@
                 <i class="fas fa-code"></i>
                 RB
             </a>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -539,6 +582,14 @@
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="nav-right" style="display: flex; align-items: center;">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -706,7 +757,7 @@
         <p class="intro">Interested in collaboration or have a project in mind? I'd love to hear from you.</p>
         
         <div class="social-links">
-            <a href="mailto:berisharedon10@gmail.com" class="social-link">
+            <a href="/cdn-cgi/l/email-protection#294b4c5b405a41485b4c4d46471819694e44484045074a4644" class="social-link">
                 <i class="fas fa-envelope"></i> Email
             </a>
             <a href="https://github.com/Redoniii" target="_blank" class="social-link">
@@ -738,6 +789,7 @@
         <p>&copy; 2025 Redon Berisha | All Rights Reserved</p>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Menu toggle functionality
         const menuToggle = document.querySelector('.menu-toggle');
@@ -803,6 +855,35 @@
                 }
             });
         }
+
+        // Dark mode toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Apply the saved theme or use system preference
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.body.classList.add('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Toggle dark mode
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            
+            // Update icon
+            if (document.body.classList.contains('dark')) {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        });
     </script>
 </body>
 </html>
+
