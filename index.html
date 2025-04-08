@@ -506,6 +506,25 @@
             transform: translateY(-2px);
         }
 
+        .download-cv-btn {
+            display: inline-block;
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .download-cv-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 4rem 0 3rem;
@@ -597,7 +616,7 @@
     <header>
         <img src="./images/UIBM.jpg" alt="Redon Berisha" class="profile-photo">
         <h1>Redon Berisha</h1>
-        <p>CSE Student</p>
+        <p>I'm a CSE Student — <a href="./PDF/Redon_Berisha_CV.pdf" class="download-cv-btn" download>Check out my CV</a></p>
     </header>
 
     <section id="about" class="intro">
