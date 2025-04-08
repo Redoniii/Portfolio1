@@ -43,7 +43,7 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-light);
-            padding-top: 90px; /* Add padding for fixed navbar */
+            padding-top: 70px; /* Adjusted padding for fixed navbar */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -182,7 +182,7 @@
         header {
             background: linear-gradient(155deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 6rem 0 4rem;
+            padding: 5rem 0 3rem; /* Adjusted padding for better spacing */
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -526,17 +526,12 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 80px; /* Adjust padding for smaller screens */
+            }
+
             header {
-                padding: 4rem 0 3rem;
-            }
-
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            .profile-photo {
-                width: 160px;
-                height: 160px;
+                padding: 4rem 0 3rem; /* Reduce header padding for smaller screens */
             }
 
             .section-title {
