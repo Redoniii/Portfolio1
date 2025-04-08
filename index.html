@@ -43,7 +43,7 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-light);
-            padding-top: 70px; /* Add padding for fixed navbar */
+            padding-top: 60px; /* Add padding for fixed navbar */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -145,6 +145,10 @@
         }
 
         @media (max-width: 768px) {
+            header{
+                margin-top: 30px;
+            }
+
             .menu-toggle {
                 display: block;
             }
@@ -526,10 +530,6 @@
         }
 
         @media (max-width: 768px) {
-            body{
-                padding-top: 90px;
-            }
-
             header {
                 padding: 4rem 0 3rem;
             }
