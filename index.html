@@ -46,6 +46,20 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        .project-status {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #1f2937; /* Dark gray text */
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+
         nav {
             background: var(--nav-bg);
             padding: 0.75rem 2rem;
@@ -603,15 +617,20 @@
                 <h3>Database Management</h3>
                 <p>Expertise in MySQL and SQL Server database design and optimization</p>
             </div>
-            <div class="skill-card">
+            <!-- <div class="skill-card">
                 <i class="fas fa-code fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
                 <h3>Software Engineering</h3>
                 <p>Strong foundation in data structures, algorithms, and software architecture</p>
-            </div>
+            </div> -->
             <div class="skill-card">
                 <i class="fas fa-project-diagram fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
                 <h3>Problem Solving</h3>
                 <p>Analytical thinking and creative solution development</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-chart-line fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>Data Analysis</h3>
+                <p>Data cleaning, visualization, and statistical insights using Python and Jupyter Notebook</p>
             </div>
         </div>
     </section>
@@ -620,21 +639,21 @@
         <h2 class="section-title">Technical Expertise</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <h3>C#</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 55%"></div>
-                </div>
-            </div>
-            <div class="skill-card">
                 <h3>HTML/CSS</h3>
                 <div class="language-bar">
                     <div class="language-progress" style="width: 85%"></div>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>JavaScript</h3>
+                <h3>SQL</h3>
                 <div class="language-bar">
-                    <div class="language-progress" style="width: 30%"></div>
+                    <div class="language-progress" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>C#</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 65%"></div>
                 </div>
             </div>
             <div class="skill-card">
@@ -644,9 +663,15 @@
                 </div>
             </div>
             <div class="skill-card">
-                <h3>SQL</h3>
+                <h3>ReactJS & TailwindCSS</h3>
                 <div class="language-bar">
-                    <div class="language-progress" style="width: 85%"></div>
+                    <div class="language-progress" style="width: 45%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <div class="language-bar">
+                    <div class="language-progress" style="width: 30%"></div>
                 </div>
             </div>
         </div>
@@ -666,17 +691,46 @@
             </div>
             <div class="project-card">
                 <div class="project-content">
-                    <h3 class="project-title">Recipe-Finder</h3>
-                    <p class="project-description">An intuitive mobile application for discovering and organizing recipes, featuring personalized recommendations and ingredient management.</p>
-                    <a href="https://github.com/Redoniii/Recipe-Finder" class="project-link" target="_blank">
-                        View Project <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div><div class="project-card">
-                <div class="project-content">
                     <h3 class="project-title">Library-Management</h3>
                     <p class="project-description">A windows app about Library-Management done using SQLServer and C#(.NET).</p>
                     <a href="https://github.com/Redoniii/LibraryForms" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">NBA Data Analysis</h3>
+                    <p class="project-description">A data analysis project on NBA players using Python and Jupyter Notebook, featuring stats visualization and insights.</p>
+                    <a href="https://github.com/Redoniii/NBA-Data" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card more-projects">
+                <div class="project-content">
+                    <sup class="project-status">Currently in development</sup>
+                    <h3 class="project-title">Food Waste Reduction</h3>
+                    <p class="project-description">A collaborative initiative aimed at minimizing food waste through digital solutions. I’m leading the front-end development using ReactJS and Tailwind CSS to build an intuitive, user-friendly interface.</p>
+                    <a href="https://food-waste-reduction-ks.netlify.app/" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>            
+            <div class="project-card more-projects">
+                <div class="project-content">
+                    <h3 class="project-title">Alarm Monitoring System</h3>
+                    <p class="project-description"> A database solution developed using MySQL to efficiently manage and monitor alarms for multiple companies.</p>
+                    <a href="https://github.com/Redoniii/Alarm-Monitoring" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card more-projects">
+                <div class="project-content">
+                    <h3 class="project-title">Recipe-Finder</h3>
+                    <p class="project-description">An intuitive mobile application for discovering and organizing recipes, featuring personalized recommendations and ingredient management.</p>
+                    <a href="https://github.com/Redoniii/Recipe-Finder" class="project-link" target="_blank">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -704,15 +758,6 @@
                     <h3 class="project-title">RSA Algorithm</h3>
                     <p class="project-description">Implementation of the RSA encryption algorithm with practical applications.</p>
                     <a href="https://github.com/Redoniii/RSAAlgorithm" class="project-link" target="_blank">
-                        View Project <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="project-card more-projects">
-                <div class="project-content">
-                    <h3 class="project-title">Alarm Monitoring</h3>
-                    <p class="project-description">A database made using MYSQL, for managing various alarms for different companies.</p>
-                    <a href="https://github.com/Redoniii/Alarm-Monitoring" class="project-link" target="_blank">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
