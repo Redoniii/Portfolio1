@@ -448,9 +448,10 @@
         }
 
         .social-links {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
             justify-content: center;
-            gap: 2rem;
             margin-top: 3rem;
         }
 
@@ -459,6 +460,7 @@
             text-decoration: none;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             transition: var(--transition);
             padding: 0.5rem 1rem;
@@ -556,9 +558,8 @@
                 align-items: center;
             }
 
-            .social-link {
-                width: 100%;
-                justify-content: center;
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
