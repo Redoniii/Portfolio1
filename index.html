@@ -311,11 +311,26 @@
             padding: 1rem 0;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--form-border);
         }
 
         .skills-grid-scroll::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Edge */
+            height: 8px;
+        }
+
+        .skills-grid-scroll::-webkit-scrollbar-track {
+            background: var(--form-border);
+            border-radius: 10px;
+        }
+
+        .skills-grid-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .skills-grid-scroll::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
         }
 
         .skills-grid-scroll .skill-card {
@@ -654,7 +669,7 @@
             /* Make Technical Expertise show 3 columns on narrow mobile screens
                so items appear as two rows of three instead of a single stacked column */
             .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(1, 1fr);
                 gap: 1rem;
             }
         }
@@ -743,41 +758,38 @@
 
     <section id="languages">
         <h2 class="section-title">Technical Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Python</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 85%"></div>
+        <div class="scroll-container">
+            <button class="scroll-buttons scroll-left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-buttons scroll-right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="skills-grid-scroll">
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Data science and AI development with extensive library support.</p>
                 </div>
-            </div>
-            <div class="skill-card">
-                <h3>SQL</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 85%"></div>
+                <div class="skill-card">
+                    <h3>SQL</h3>
+                    <p>Advanced database design, optimization, and complex query development.</p>
                 </div>
-            </div>
-            <div class="skill-card">
-                <h3>Jupyter Notebook</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 65%"></div>
+                <div class="skill-card">
+                    <h3>Jupyter Notebook</h3>
+                    <p>Interactive data analysis and visualization in computational environments.</p>
                 </div>
-            </div>
-            <div class="skill-card">
-                <h3>C#</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 50%"></div>
+                <div class="skill-card">
+                    <h3>C#</h3>
+                    <p>Windows desktop applications and .NET framework development.</p>
                 </div>
-            </div>
-            <div class="skill-card">
-                <h3>Html/Css/Javascript</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 45%"></div>
+
+                <div class="skill-card">
+                    <h3>Html/Css/Javascript</h3>
+                    <p>Frontend fundamentals for responsive and interactive web experiences.</p>
                 </div>
-            </div>
-            <div class="skill-card">
-                <h3>ReactJS & TailwindCSS</h3>
-                <div class="language-bar">
-                    <div class="language-progress" style="width: 30%"></div>
+                <div class="skill-card">
+                    <h3>ReactJS & TailwindCSS</h3>
+                    <p>Modern component-based UI development with utility-first styling.</p>
                 </div>
             </div>
         </div>
@@ -1066,26 +1078,28 @@
         });
 
         // Add scroll functionality for Professional Development section
-        const scrollContainer = document.querySelector('.skills-grid-scroll');
-        const scrollLeftBtn = document.querySelector('.scroll-left');
-        const scrollRightBtn = document.querySelector('.scroll-right');
-        const scrollAmount = 300; // Adjust this value to control scroll distance
+        document.querySelectorAll('.scroll-container').forEach((container) => {
+            const scrollLeftBtn = container.querySelector('.scroll-left');
+            const scrollRightBtn = container.querySelector('.scroll-right');
+            const scrollContent = container.querySelector('.skills-grid-scroll');
+            const scrollAmount = 300;
 
-        if (scrollLeftBtn && scrollRightBtn) {
-            scrollLeftBtn.addEventListener('click', () => {
-                scrollContainer.scrollBy({
-                    left: -scrollAmount,
-                    behavior: 'smooth'
+            if (scrollLeftBtn && scrollRightBtn && scrollContent) {
+                scrollLeftBtn.addEventListener('click', () => {
+                    scrollContent.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
                 });
-            });
 
-            scrollRightBtn.addEventListener('click', () => {
-                scrollContainer.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
+                scrollRightBtn.addEventListener('click', () => {
+                    scrollContent.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
                 });
-            });
-        }
+            }
+        });
     </script>
 </body>
 </html>
