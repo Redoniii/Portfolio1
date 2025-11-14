@@ -316,21 +316,37 @@
         }
 
         .skills-grid-scroll::-webkit-scrollbar {
-            height: 8px;
+            height: 10px;
         }
 
         .skills-grid-scroll::-webkit-scrollbar-track {
             background: var(--form-border);
             border-radius: 10px;
+            margin: 5px 0;
         }
 
         .skills-grid-scroll::-webkit-scrollbar-thumb {
             background: var(--accent-color);
             border-radius: 10px;
+            border: 2px solid var(--form-border);
         }
 
         .skills-grid-scroll::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Dark mode scrollbar */
+        .dark .skills-grid-scroll {
+            scrollbar-color: var(--accent-color) var(--form-border);
+        }
+
+        .dark .skills-grid-scroll::-webkit-scrollbar-track {
+            background: var(--form-border);
+        }
+
+        .dark .skills-grid-scroll::-webkit-scrollbar-thumb {
             background: var(--accent-color);
+            border-color: var(--form-border);
         }
 
         .skills-grid-scroll .skill-card {
