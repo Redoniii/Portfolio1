@@ -326,7 +326,7 @@
 
         .scroll-container {
             position: relative;
-            max-width: 1000px;
+            max-width: 2000px;
             margin: 0 auto;
         }
 
@@ -650,6 +650,13 @@
             .skill-card {
                 padding: 1.5rem;
             }
+
+            /* Make Technical Expertise show 3 columns on narrow mobile screens
+               so items appear as two rows of three instead of a single stacked column */
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -692,41 +699,44 @@
 
     <section id="skills">
         <h2 class="section-title">Core Competencies</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fas fa-brain fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Data Science</h3>
-                <p>Transforming raw data into meaningful insights using analytics and machine learning.</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-robot fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Machine Learning</h3>
-                <p>Building predictive models and training algorithms to uncover patterns and improve decision-making.</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-database fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Database Management</h3>
-                <p>Expertise in designing, optimizing, and maintaining SQL databases.</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-globe fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Web Development</h3>
-                <p>Modern web applications using HTML5, CSS3, and JavaScript frameworks</p>
-            </div>
-            <!-- <div class="skill-card">
-                <i class="fas fa-code fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Software Engineering</h3>
-                <p>Strong foundation in data structures, algorithms, and software architecture</p>
-            </div> -->
-            <div class="skill-card">
-                <i class="fas fa-chart-line fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Data Analysis</h3>
-                <p>Data cleaning, visualization, and statistical insights using Python and Jupyter Notebook</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-project-diagram fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
-                <h3>Problem Solving</h3>
-                <p>Analytical thinking and creative solution development</p>
+        <div class="scroll-container">
+            <button class="scroll-buttons scroll-left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-buttons scroll-right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="skills-grid-scroll">
+                <div class="skill-card">
+                    <i class="fas fa-brain fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Data Science</h3>
+                    <p>Transforming raw data into meaningful insights using analytics and machine learning.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-robot fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Building predictive models and training algorithms to uncover patterns and improve decision-making.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Database Management</h3>
+                    <p>Expertise in designing, optimizing, and maintaining SQL databases.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-globe fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Web Development</h3>
+                    <p>Modern web applications using HTML5, CSS3, and JavaScript frameworks</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Data Analysis</h3>
+                    <p>Data cleaning, visualization, and statistical insights using Python and Jupyter Notebook</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-project-diagram fa-2x" style="color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Problem Solving</h3>
+                    <p>Analytical thinking and creative solution development</p>
+                </div>
             </div>
         </div>
     </section>
@@ -735,7 +745,7 @@
         <h2 class="section-title">Technical Expertise</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <h3>HTML/CSS</h3>
+                <h3>Python</h3>
                 <div class="language-bar">
                     <div class="language-progress" style="width: 85%"></div>
                 </div>
@@ -747,25 +757,25 @@
                 </div>
             </div>
             <div class="skill-card">
-                <h3>C#</h3>
+                <h3>Jupyter Notebook</h3>
                 <div class="language-bar">
                     <div class="language-progress" style="width: 65%"></div>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>Python</h3>
+                <h3>C#</h3>
                 <div class="language-bar">
                     <div class="language-progress" style="width: 50%"></div>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>ReactJS & TailwindCSS</h3>
+                <h3>Html/Css/Javascript</h3>
                 <div class="language-bar">
                     <div class="language-progress" style="width: 45%"></div>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>JavaScript</h3>
+                <h3>ReactJS & TailwindCSS</h3>
                 <div class="language-bar">
                     <div class="language-progress" style="width: 30%"></div>
                 </div>
@@ -1009,11 +1019,8 @@
             });
         }, { threshold: 0.5 });
 
-        document.querySelectorAll('.language-progress').forEach(bar => {
-            bar.dataset.width = bar.style.width;
-            bar.style.width = '0';
-            observer.observe(bar);
-        });
+        // Remove language progress bars
+        document.querySelectorAll('.language-progress').forEach(bar => bar.parentElement.remove());
 
         function toggleProjects() {
             const moreProjects = document.querySelectorAll('.more-projects');
